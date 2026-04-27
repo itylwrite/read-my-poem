@@ -90,6 +90,16 @@ if (nameInput) {
 // =============================================
 async function trackView() {
     if (!window.location.pathname.includes('-open')) return;
+
+    // ✅ Handle name check here instead of inline script
+    const savedName = localStorage.getItem('userName');
+    if (!savedName) {
+        const currentPage = window.location.pathname.split('/').pop();
+        window.location.href = currentPage.replace('-open.html', '-fill.html');
+        return;
+    }
+    document.getElementById('display-name').textContent = savedName;
+
     if (typeof db === 'undefined') return;
 
     const poem = getPoemSlug();
@@ -100,10 +110,7 @@ async function trackView() {
         .eq('poem', poem)
         .single();
 
-    if (fetchError) {
-        console.error('Fetch error:', fetchError);
-        return;
-    }
+    if (fetchError) { console.error('Fetch error:', fetchError); return; }
 
     const { data: updated, error: updateError } = await db
         .from('poem_views')
@@ -112,10 +119,7 @@ async function trackView() {
         .select('views')
         .single();
 
-    if (updateError) {
-        console.error('Update error:', updateError);
-        return;
-    }
+    if (updateError) { console.error('Update error:', updateError); return; }
 
     const viewEl = document.querySelector('.view-count');
     if (viewEl) {
