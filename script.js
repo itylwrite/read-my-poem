@@ -94,11 +94,10 @@ async function trackView() {
 
     const poem = getPoemSlug();
 
-    // ✅ Step 1: Get current view count
     const { data: current, error: fetchError } = await db
-        .from('poem_stats')
-        .select('view_count')
-        .eq('poem_id', poem)
+        .from('poem_views')
+        .select('views')
+        .eq('poem', poem)
         .single();
 
     if (fetchError) {
@@ -106,12 +105,11 @@ async function trackView() {
         return;
     }
 
-    // ✅ Step 2: Update with +1
     const { data: updated, error: updateError } = await db
-        .from('poem_stats')
-        .update({ view_count: current.view_count + 1 })
-        .eq('poem_id', poem)
-        .select('view_count')
+        .from('poem_views')
+        .update({ views: current.views + 1 })
+        .eq('poem', poem)
+        .select('views')
         .single();
 
     if (updateError) {
@@ -119,10 +117,9 @@ async function trackView() {
         return;
     }
 
-    // ✅ Step 3: Show the new count on the page
     const viewEl = document.querySelector('.view-count');
     if (viewEl) {
-        viewEl.textContent = '👁 ' + updated.view_count;
+        viewEl.textContent = '👁 ' + updated.views;
     }
 }
 
