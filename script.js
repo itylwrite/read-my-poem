@@ -79,36 +79,40 @@ if (nameInput) {
 // =============================================
 // VIEW COUNTER + NAME CHECK — any -open.html
 // =============================================
+// This function runs automatically when the poem page loads
 async function trackView() {
-    // 1. Get the poem slug (e.g., 'tssc' or 'bbt')
-    const poem = getPoemSlug(); 
+    // 1. Figure out which poem we are looking at (tssc or bbt)
+    const poemSlug = getPoemSlug(); 
 
-    // 2. Fetch the current views from your NEW project
+    // 2. Fetch the current views from Supabase
+    // We use 'db' here because that's what we named it in supabase-config.js
     const { data: current, error: fetchError } = await db
         .from('poem_views') 
         .select('views')
-        .eq('poem', poem)
+        .eq('poem', poemSlug)
         .single();
 
     if (fetchError) {
-        console.error("Error fetching views:", fetchError);
+        console.error("Could not find the poem in the database:", fetchError);
         return;
     }
 
-    // 3. Update the view count by adding 1
+    // 3. Update the view count (Add +1)
     const { data: updated, error: updateError } = await db
         .from('poem_views')
         .update({ views: current.views + 1 })
-        .eq('poem', poem)
+        .eq('poem', poemSlug)
         .select()
         .single();
 
     if (updateError) {
-        console.error("Error updating views:", updateError);
+        console.error("Could not update the view count:", updateError);
     } else {
-        // 4. Update the number on your website screen
+        // 4. Show the new number on the screen
         const viewEl = document.querySelector('.view-count');
-        if (viewEl) viewEl.textContent = '👁 ' + updated.views;
+        if (viewEl) {
+            viewEl.textContent = '👁 ' + updated.views;
+        }
     }
 }
 
