@@ -116,19 +116,4 @@ async function trackView() {
     }
 }
 
-// trackView();
-
-// =============================================
-// AUTO-RUN LOGIC
-// =============================================
-window.addEventListener('load', () => {
-    const pageName = window.location.pathname.split('/').pop();
-    
-    // Only trigger the view counter if the user is on an "open" page
-    if (pageName.includes('-open.html')) {
-        console.log("Poem page detected: Increasing view count...");
-        trackView();
-    } else {
-        console.log("Fill page detected: Skipping view count.");
-    }
-});
+trackView();
