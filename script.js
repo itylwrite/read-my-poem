@@ -80,47 +80,35 @@ if (nameInput) {
 // VIEW COUNTER + NAME CHECK — any -open.html
 // =============================================
 async function trackView() {
-    // Only run on -open pages
-    if (!window.location.pathname.includes('-open')) return;
+    // 1. Get the poem slug (e.g., 'tssc' or 'bbt')
+    const poem = getPoemSlug(); 
 
-    // ✅ Check name — redirect back to -fill if missing
-    const savedName = localStorage.getItem('userName');
-    if (!savedName) {
-        const currentPage = window.location.pathname.split('/').pop();
-        window.location.href = currentPage.replace('-open.html', '-fill.html');
-        return;
-    }
-
-    // ✅ Show the name on the page
-    const nameEl = document.getElementById('display-name');
-    if (nameEl) nameEl.textContent = savedName;
-
-    // ✅ Update view count in Supabase
-    if (typeof db === 'undefined') return;
-
-    const poem = getPoemSlug();
-
+    // 2. Fetch the current views from your NEW project
     const { data: current, error: fetchError } = await db
-        .from('poem_views')
+        .from('poem_views') 
         .select('views')
         .eq('poem', poem)
         .single();
 
-    if (fetchError) { console.error('Fetch error:', fetchError); return; }
+    if (fetchError) {
+        console.error("Error fetching views:", fetchError);
+        return;
+    }
 
+    // 3. Update the view count by adding 1
     const { data: updated, error: updateError } = await db
         .from('poem_views')
         .update({ views: current.views + 1 })
         .eq('poem', poem)
-        .select('views')
+        .select()
         .single();
 
-    if (updateError) { console.error('Update error:', updateError); return; }
-
-    // ✅ Show the new count on the page
-    const viewEl = document.querySelector('.view-count');
-    if (viewEl) {
-        viewEl.textContent = '👁 ' + updated.views;
+    if (updateError) {
+        console.error("Error updating views:", updateError);
+    } else {
+        // 4. Update the number on your website screen
+        const viewEl = document.querySelector('.view-count');
+        if (viewEl) viewEl.textContent = '👁 ' + updated.views;
     }
 }
 
