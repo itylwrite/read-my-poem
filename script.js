@@ -89,24 +89,40 @@ if (nameInput) {
 // Shows the real count on the page
 // =============================================
 async function trackView() {
-    // Only run on -open pages
     if (!window.location.pathname.includes('-open')) return;
     if (typeof db === 'undefined') return;
 
     const poem = getPoemSlug();
 
-    // ✅ Call the increment function in Supabase
-    const { data, error } = await db.rpc('increment_views', { poem_slug: poem });
+    // ✅ Step 1: Get current view count
+    const { data: current, error: fetchError } = await db
+        .from('poem_stats')
+        .select('view_count')
+        .eq('poem_id', poem)
+        .single();
 
-    if (error) {
-        console.error('View tracking error:', error);
+    if (fetchError) {
+        console.error('Fetch error:', fetchError);
         return;
     }
 
-    // ✅ Update the view count shown on the page
+    // ✅ Step 2: Update with +1
+    const { data: updated, error: updateError } = await db
+        .from('poem_stats')
+        .update({ view_count: current.view_count + 1 })
+        .eq('poem_id', poem)
+        .select('view_count')
+        .single();
+
+    if (updateError) {
+        console.error('Update error:', updateError);
+        return;
+    }
+
+    // ✅ Step 3: Show the new count on the page
     const viewEl = document.querySelector('.view-count');
-    if (viewEl && data) {
-        viewEl.textContent = '👁 ' + data;
+    if (viewEl) {
+        viewEl.textContent = '👁 ' + updated.view_count;
     }
 }
 
