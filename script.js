@@ -116,4 +116,17 @@ async function trackView() {
     }
 }
 
-trackView();
+// =============================================
+// INITIALIZATION — Runs only on -open pages
+// =============================================
+window.addEventListener('load', () => {
+    const page = window.location.pathname.split('/').pop();
+    
+    // Check if the current page filename contains "-open"
+    if (page.includes('-open.html')) {
+        console.log("Poem page detected. Tracking view...");
+        trackView();
+    } else {
+        console.log("Not a poem page. View tracking skipped.");
+    }
+});
