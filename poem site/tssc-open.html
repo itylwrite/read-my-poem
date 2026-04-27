@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Content</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 0;
+            font-family: 'Indie Flower', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+
+            background-color: #d8d8d8;
+            background-image:
+                repeating-linear-gradient(
+                    17deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(255,255,255,0.35) 1px,
+                    rgba(255,255,255,0.35) 2px
+                ),
+                repeating-linear-gradient(
+                    107deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(0,0,0,0.12) 1px,
+                    rgba(0,0,0,0.12) 2px
+                ),
+                repeating-linear-gradient(
+                    63deg,
+                    transparent 0px,
+                    transparent 2px,
+                    rgba(180,180,180,0.2) 2px,
+                    rgba(180,180,180,0.2) 3px
+                ),
+                repeating-linear-gradient(
+                    143deg,
+                    transparent 0px,
+                    transparent 2px,
+                    rgba(255,255,255,0.18) 2px,
+                    rgba(255,255,255,0.18) 3px
+                ),
+                repeating-linear-gradient(
+                    30deg,
+                    transparent 0px,
+                    transparent 3px,
+                    rgba(0,0,0,0.08) 3px,
+                    rgba(0,0,0,0.08) 4px
+                ),
+                repeating-linear-gradient(
+                    80deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(100,100,100,0.06) 1px,
+                    rgba(100,100,100,0.06) 2px
+                ),
+                radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 80%, rgba(190,190,190,0.3) 0%, transparent 55%);
+        }
+
+        /* ✅ Greeting centered on top */
+        .greeting {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        /* ✅ Buttons row, centered, close together */
+        .top-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* ✅ Close together */
+            margin-bottom: 30px;
+        }
+
+        .top-btn {
+            background: #567189;
+            border: 5px solid #4a5e71;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-btn:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .view-count {
+            background: #4a5e71;
+            border: 5px solid #4a5e71;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .poem-container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #8fa9c4;
+            min-height: 600px;
+            padding: 40px 0;
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 38px,
+                rgba(0, 0, 0, 0.2) 38px,
+                rgba(0, 0, 0, 0.2) 40px
+            );
+            background-size: 100% 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        .poem-title { font-size: 2.5rem; text-decoration: underline; margin-bottom: 10px; }
+        .poem-author { font-size: 1.8rem; margin-bottom: 80px; }
+        .poem-body { font-size: 1.5rem; line-height: 40px; }
+
+        .footer-nav { margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Greeting on top -->
+    <div class="greeting">
+        Hi, <span id="display-name"></span>!<br>
+        pls, enjoy
+    </div>
+
+    <!-- ✅ Buttons side by side, close together, centered below -->
+    <div class="top-row">
+        <button class="top-btn" onclick="location.href='index.html'">Back to Home</button>
+        <div class="view-count">👁 0</div>
+    </div>
+
+    <div class="poem-container">
+        <div class="poem-title">too sweet salted caramel</div>
+        <div class="poem-author">by Tyl</div>
+        <div class="poem-body">
+            body<br>
+            text goes here...
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <button class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Go back to top</button>
+    </div>
+
+    <script>
+        const savedName = localStorage.getItem('userName');
+        if (!savedName) {
+            window.location.href = 'tssc-fill.html';
+        } else {
+            document.getElementById('display-name').textContent = savedName;
+        }
+    </script>
+
+</body>
+</html>

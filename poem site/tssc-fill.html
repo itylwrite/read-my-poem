@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Title Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            color: black;
+            overflow-y: scroll;
+            background-color: #8fa9c4; 
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 38px,
+                rgba(0, 0, 0, 0.2) 38px,
+                rgba(0, 0, 0, 0.2) 40px
+            );
+            background-size: 100% 40px;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-family: 'Indie Flower', cursive;
+            font-size: 3rem;
+            margin: 0 0 10px 0; 
+            font-weight: bold;
+        }
+
+        .author {
+            font-family: 'Indie Flower', cursive;
+            font-size: 2rem;
+            margin: 0 0 15px 0; 
+            font-weight: bold;
+        }
+
+        .handle {
+            background: #567189;
+            padding: 4px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 80px; 
+            text-decoration: underline;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.2s;
+        }
+
+        .handle:hover { opacity: 0.8; }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .question {
+            margin: 0 0 15px 0;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.5;
+        }
+
+        .text-input {
+            width: 85%;
+            background: white;
+            border: 2px solid black;
+            border-radius: 40px;
+            padding: 12px;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1rem;
+            text-align: center;
+            color: #777;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        .action-text {
+            display: block;
+            margin: 0 0 15px 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .enter-btn {
+            width: 90%;
+            background: #d4fcd4;
+            border: 5px solid #4cae4c;
+            color: #4cae4c;
+            border-radius: 40px;
+            padding: 8px;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .enter-btn:hover {
+            background: #c2f7c2;
+            transform: scale(1.02);
+        }
+
+        .back-btn {
+            width: 90%;
+            background: #567189;
+            border: 5px solid #4a5e71;
+            color: white; 
+            border-radius: 40px;
+            padding: 8px;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            body {
+                height: auto; 
+                min-height: 100vh;
+                align-items: flex-start;
+                padding: 20px 0;
+                overflow-y: auto;
+            }
+            .main-content {
+                position: relative; 
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 0 auto;
+            }
+            h1 { font-size: 3rem; }
+            .handle { margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <h1>too sweet salted caramel</h1> 
+        <div class="author">by Tyl</div> 
+        
+        <a href="https://www.instagram.com/tyljohna" target="_blank" class="handle">@tyljohna</a>
+
+        <div class="input-section">
+            <p class="question">May I know your name before we continue?</p>
+
+            <input type="text" id="name-input" class="text-input" placeholder="Enter your name here..."> 
+            
+            <span class="action-text">Let's go!</span> 
+            
+            <button class="enter-btn" id="submit-name">Enter</button>
+
+
+
+            <button class="back-btn" onclick="location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
