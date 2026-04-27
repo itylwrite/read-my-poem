@@ -15,56 +15,18 @@
             align-items: center;
             min-height: 100vh;
             position: relative;
-
             background-color: #d8d8d8;
             background-image:
-                repeating-linear-gradient(
-                    17deg,
-                    transparent 0px,
-                    transparent 1px,
-                    rgba(255,255,255,0.35) 1px,
-                    rgba(255,255,255,0.35) 2px
-                ),
-                repeating-linear-gradient(
-                    107deg,
-                    transparent 0px,
-                    transparent 1px,
-                    rgba(0,0,0,0.12) 1px,
-                    rgba(0,0,0,0.12) 2px
-                ),
-                repeating-linear-gradient(
-                    63deg,
-                    transparent 0px,
-                    transparent 2px,
-                    rgba(180,180,180,0.2) 2px,
-                    rgba(180,180,180,0.2) 3px
-                ),
-                repeating-linear-gradient(
-                    143deg,
-                    transparent 0px,
-                    transparent 2px,
-                    rgba(255,255,255,0.18) 2px,
-                    rgba(255,255,255,0.18) 3px
-                ),
-                repeating-linear-gradient(
-                    30deg,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(0,0,0,0.08) 3px,
-                    rgba(0,0,0,0.08) 4px
-                ),
-                repeating-linear-gradient(
-                    80deg,
-                    transparent 0px,
-                    transparent 1px,
-                    rgba(100,100,100,0.06) 1px,
-                    rgba(100,100,100,0.06) 2px
-                ),
+                repeating-linear-gradient(17deg, transparent 0px, transparent 1px, rgba(255,255,255,0.35) 1px, rgba(255,255,255,0.35) 2px),
+                repeating-linear-gradient(107deg, transparent 0px, transparent 1px, rgba(0,0,0,0.12) 1px, rgba(0,0,0,0.12) 2px),
+                repeating-linear-gradient(63deg, transparent 0px, transparent 2px, rgba(180,180,180,0.2) 2px, rgba(180,180,180,0.2) 3px),
+                repeating-linear-gradient(143deg, transparent 0px, transparent 2px, rgba(255,255,255,0.18) 2px, rgba(255,255,255,0.18) 3px),
+                repeating-linear-gradient(30deg, transparent 0px, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px),
+                repeating-linear-gradient(80deg, transparent 0px, transparent 1px, rgba(100,100,100,0.06) 1px, rgba(100,100,100,0.06) 2px),
                 radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 60%),
                 radial-gradient(ellipse at 75% 80%, rgba(190,190,190,0.3) 0%, transparent 55%);
         }
 
-        /* ✅ Greeting centered on top */
         .greeting {
             text-align: center;
             font-size: 2rem;
@@ -73,12 +35,11 @@
             margin-bottom: 30px;
         }
 
-        /* ✅ Buttons row, centered, close together */
         .top-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px; /* ✅ Close together */
+            gap: 10px;
             margin-bottom: 30px;
         }
 
@@ -96,10 +57,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .top-btn:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
+        .top-btn:hover { opacity: 0.8; transform: scale(1.05); }
 
         .view-count {
             background: #4a5e71;
@@ -138,19 +96,16 @@
         .poem-title { font-size: 2.5rem; text-decoration: underline; margin-bottom: 10px; }
         .poem-author { font-size: 1.8rem; margin-bottom: 40px; }
         .poem-body { font-size: 1.5rem; line-height: 40px; }
-
         .footer-nav { margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <!-- ✅ Greeting on top -->
     <div class="greeting">
         Hi, <span id="display-name"></span>!<br>
         pls, enjoy
     </div>
 
-    <!-- ✅ Buttons side by side, close together, centered below -->
     <div class="top-row">
         <button class="top-btn" onclick="location.href='index.html'">Back to Home</button>
         <div class="view-count">👁 0</div>
@@ -171,24 +126,13 @@
             these cheeks of apple<br>
             these drumbeats thrum deep within<br>
             bet not even an eyelid slips<br>
-            like statues on a hillside green<br>
-            
-
+            like statues on a hillside green
         </div>
     </div>
 
     <div class="footer-nav">
         <button class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Go back to top</button>
     </div>
-
-    <script>
-        const savedName = localStorage.getItem('userName');
-        if (!savedName) {
-            window.location.href = 'bbt-fill.html';
-        } else {
-            document.getElementById('display-name').textContent = savedName;
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
