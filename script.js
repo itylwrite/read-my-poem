@@ -31,7 +31,6 @@ function getPoemSlug() {
 
 // =============================================
 // NAME SUBMISSION — any -fill.html
-// Saves name + poem to Supabase, then redirects
 // =============================================
 const submitBtn = document.getElementById('submit-name');
 const nameInput = document.getElementById('name-input');
@@ -43,18 +42,12 @@ async function processSubmission() {
         const name = nameInput.value.trim();
         const poem = getPoemSlug();
 
-        // Save to localStorage for the greeting
         localStorage.setItem('userName', name);
 
-        // ✅ Save visitor name + which poem to Supabase
         if (typeof db !== 'undefined') {
             await db.from('poem_visitors').insert({ name: name, poem: poem });
         }
 
-        // ✅ Auto-detects which -open.html to go to
-        // e.g. tssc-fill.html → tssc-open.html
-        //      bbt-fill.html  → bbt-open.html
-        // No changes needed here when adding new poems!
         const currentPage = window.location.pathname.split('/').pop();
         window.location.href = currentPage.replace('-fill.html', '-open.html');
 
@@ -84,22 +77,25 @@ if (nameInput) {
 }
 
 // =============================================
-// VIEW COUNTER — runs on any -open.html
-// Adds +1 to Supabase every time page is opened
-// Shows the real count on the page
+// VIEW COUNTER + NAME CHECK — any -open.html
 // =============================================
 async function trackView() {
+    // Only run on -open pages
     if (!window.location.pathname.includes('-open')) return;
 
-    // ✅ Handle name check here instead of inline script
+    // ✅ Check name — redirect back to -fill if missing
     const savedName = localStorage.getItem('userName');
     if (!savedName) {
         const currentPage = window.location.pathname.split('/').pop();
         window.location.href = currentPage.replace('-open.html', '-fill.html');
         return;
     }
-    document.getElementById('display-name').textContent = savedName;
 
+    // ✅ Show the name on the page
+    const nameEl = document.getElementById('display-name');
+    if (nameEl) nameEl.textContent = savedName;
+
+    // ✅ Update view count in Supabase
     if (typeof db === 'undefined') return;
 
     const poem = getPoemSlug();
@@ -121,11 +117,11 @@ async function trackView() {
 
     if (updateError) { console.error('Update error:', updateError); return; }
 
+    // ✅ Show the new count on the page
     const viewEl = document.querySelector('.view-count');
     if (viewEl) {
         viewEl.textContent = '👁 ' + updated.views;
     }
 }
 
-// Run automatically when page loads
 trackView();
