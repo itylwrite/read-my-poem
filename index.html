@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Tyl's Poems</title>
+    <title>Home - Hi, I'm Tyl</title>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 55px; /* This creates a 20px gap on all 4 sides */
+            box-sizing: border-box; /* Crucial: This ensures the padding doesn't make the page wider than the screen */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,10 +38,63 @@
         h1 {
             font-family: 'Indie Flower', cursive;
             font-size: 3rem;
-            margin: 0 0 30px 0;
+            margin: 0 0 50px 0;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .tilted-heart {
+            display: inline-block; /* Required for rotation to work */
+            transform: rotate(-15deg); /* Negative numbers tilt left, positive tilt right */
+            margin-left: 20px; /* Adjust this to move it closer or further */
+            font-size: 1.2em; /* Optional: makes the heart slightly smaller to match the text better */
+        }
+        
+        /* Container to align them side-by-side */
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: -25px 0 45px 0;
+        }
+
+        /* 🎨 Instagram: Thick Outer Border style */
+        .ig-btn-styled {
+            background: #567189;
+            border: 5px solid #4a5e71; /* The outer "ring" look */
+            color: white;
+            border-radius: 40px;
+            padding: 8px 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .ig-btn-styled:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        /* 👁️ Views: Solid Color Pill (No thick border) */
+        .views-pill-solid {
+            background: #4a5e71; /* Same color as button */
+            border:5px solid #4a5e71;
+            color: white;
+            border-radius: 40px;
+            padding: 10px 20px; /* Slightly more padding since no border */
+            font-family: "Courier Prime", monospace;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
         /* 🌊 This leans the megaphone up and gives it breathing room */
         .megaphone-icon {
             display: inline-block; /* Required for rotate to work */
@@ -172,13 +226,24 @@
 <body>
 
     <div class="main-content">
-        <h1>Hi, I'm Tyl</h1>
+        <h1>Hi, I'm Tyl <span class="tilted-heart">♡</span></h1>
+
+       <div class="stats-wrapper">
+            <a href="https://instagram.com/tyljohna" target="_blank" class="ig-btn-styled">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            
+            <div class="views-pill-solid">
+                <i class="fa-solid fa-eye"></i>
+                <span class="view-count-text">...</span>
+            </div>
+        </div>
+
         <p class="sub-text">
             <i class="fa-solid fa-bullhorn megaphone-icon"></i> new poem is up!
         </p>
         <p class="sub-text">'too sweet salted caramel'</p>
         <button class="read-btn" onclick="location.href='tssc-fill.html'">Read Now</button>
-        
         
         <div class="dropdown-container">
             <p class="sub-text">& if u still have time</p>
