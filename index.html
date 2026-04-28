@@ -58,6 +58,7 @@
             justify-content: center;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
             margin: -25px 0 45px 0;
         }
 
@@ -221,12 +222,67 @@
             line-height: 1.5;
             margin: 20px 0 50px 0;
         }
+
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            body {
+                height: auto; 
+                min-height: 100vh;
+                align-items: flex-start;
+                padding: 20px 0;
+                overflow-y: auto;
+            }
+            .main-content {
+                position: relative; 
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 0 auto;
+            }
+            h1 { font-size: 3rem; }
+            .handle { margin-bottom: 30px; }
+        }
+        
+        /* Mobile Specific Fixes */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 20px !important;
+            }
+            /* Shrink the main titles */
+            h1 {
+                font-size: 2.2rem !important;
+                margin-bottom: 20px !important;
+            }
+
+            /* Shrink the greeting and author text */
+            .greeting, .author, .sub-text, .tea-section {
+                font-size: 1.5rem !important;
+            }
+
+            /* Fix the poem text sizes */
+            .poem-title {
+                font-size: 1.8rem !important;
+            }
+            .poem-author {
+                font-size: 1.3rem !important;
+                margin-bottom: 30px !important;
+            }
+            .poem-body {
+                font-size: 1.1rem !important;
+                line-height: 35px !important; /* Adjusted to keep lines aligned with notebook pattern */
+            }
+
+            /* Adjust button widths for mobile so they aren't too tiny or too wide */
+            .read-btn, .more-btn {
+                width: 60% !important;
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <div class="main-content">
-        <h1>Hi, I'm Tyl <span class="tilted-heart">♡</span></h1>
+        <h1>Hi, I'm Tyl <span class="tilted-heart">𖹭</span></h1>
 
        <div class="stats-wrapper">
             <a href="https://instagram.com/tyljohna" target="_blank" class="ig-btn-styled">
