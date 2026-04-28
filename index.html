@@ -9,8 +9,8 @@
     <style>
         body {
             margin: 0;
-            padding: 5vw; /* This creates a 20px gap on all 4 sides */
-            box-sizing: border-box; /* Crucial: This ensures the padding doesn't make the page wider than the screen */
+            padding: 5vw; 
+            box-sizing: border-box; 
             display: flex;
             overflow-x: hidden;
             justify-content: center;
@@ -48,26 +48,25 @@
         }
 
         .tilted-heart {
-            display: inline-block; /* Required for rotation to work */
-            transform: rotate(-15deg); /* Negative numbers tilt left, positive tilt right */
-            margin-left: 20px; /* Adjust this to move it closer or further */
-            font-size: 1.2em; /* Optional: makes the heart slightly smaller to match the text better */
+            display: inline-block; 
+            transform: rotate(-15deg); 
+            margin-left: 20px; 
+            font-size: 1.2em; 
         }
         
-        /* Container to align them side-by-side */
         .stats-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin: 50px; /* between ig and new poem is up */
+            margin: 50px; 
         }
 
-        /* 🎨 Instagram: Thick Outer Border style */
+        
         .ig-btn-styled {
             background: #567189;
-            border: 5px solid #4a5e71; /* The outer "ring" look */
+            border: 5px solid #4a5e71; 
             color: white;
             border-radius: 40px;
             padding: 8px 15px;
@@ -83,13 +82,12 @@
             opacity: 0.9;
         }
 
-        /* 👁️ Views: Solid Color Pill (No thick border) */
         .views-pill-solid {
-            background: #4a5e71; /* Same color as button */
+            background: #4a5e71;
             border:5px solid #4a5e71;
             color: white;
             border-radius: 40px;
-            padding: 10px 20px; /* Slightly more padding since no border */
+            padding: 10px 20px; 
             font-family: "Courier Prime", monospace;
             font-weight: bold;
             font-size: 1rem;
@@ -98,29 +96,35 @@
             gap: 8px;
         }
         
-        /* 🌊 This leans the megaphone up and gives it breathing room */
         .megaphone-icon {
-            display: inline-block; /* Required for rotate to work */
-            transform: rotate(-20deg); /* 🌊 Negative value tilts it 'up' to the left */
-            margin-right: 5px; /* Adds space before your text */
-            font-size: 1.5rem; /* Adjust size to match your Indie Flower text */
+            display: inline-block; 
+            transform: rotate(-20deg); 
+            margin-right: 5px; 
+            font-size: clamp(1.1rem, 4vw, 1.6rem); 
         }
 
-        .tea-icon {
+        .bell-icon {
+            color: transparent;
+            margin-right: 13px;
+            color: #000; 
+            font-size: clamp(1.1rem, 4vw, 1.6rem); 
+        }
+
+        .message-icon {
             color: transparent;
             margin-right: 13px; 
             color: #000; 
-            font-size: 1.8rem; /* 🌊 Matches the scale of your tea-section font */
+            font-size: clamp(1.1rem, 4vw, 1.6rem); 
         }
 
         .sub-text {
             font-family: 'Indie Flower', cursive;
             font-size: clamp(1.1rem, 4vw, 1.6rem);
-            margin: 5px 0;
+            margin: 5px 1; /* new poem: 1 -> 0 */
             font-weight: bold;
         }
         
-        /* ❤️ Read Now Button styled like your reference */
+        
         .read-btn {
             width: 30%;
             background: #567189;
@@ -132,7 +136,7 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            margin: 20px 0 50px 0;
+            margin: 20px 0 30px 0;
             transition: 0.2s;
         } 
 
@@ -141,10 +145,9 @@
             transform: scale(1.05);
         }
 
-        /* More Poems Button */
         .more-btn {
             width: 30%;
-            background: #567189; /* */
+            background: #567189; 
             border: 5px solid #4a5e71;
             color: white;
             border-radius: 40px;
@@ -162,29 +165,27 @@
             transform: scale(1.05);
         }
 
-        /* Container for alignment */
         .dropdown-container {
             position: relative;
             display: flex;
+            margin-bottom: 20px;
             flex-direction: column;
             align-items: center;
         }
 
-        /* The actual list styling */
         .dropdown-content {
-            display: none; /* Hidden by default */
+            display: none; 
             background: white;
-            border: 2px solid black; /* Matches your bold border style */
+            border: 2px solid black; 
             border-radius: 15px;
             width: 85%;
             max-width: 250px;
             z-index: 10;
-            margin-top: -40px; /* Pulls it closer to the button */
+            margin-top: -40px;
             margin-bottom: 20px;
             padding: 10px 0;
         }
 
-        /* The links inside the dropdown */
         .dropdown-content a {
             display: block;
             color: black;
@@ -203,7 +204,6 @@
             background-color: #8fa9c4; 
         }
 
-        /* The magic class we will toggle with JS */
         .show {
             display: block !important;
         }
@@ -211,7 +211,7 @@
         .tea-section {
             display: block;
             font-family: 'Indie Flower', cursive;
-            font-size: 2rem;
+            font-size: clamp(1.1rem, 4vw, 1.6rem);
             margin-top: 10px;
             font-weight: bold;
         }
@@ -243,42 +243,29 @@
         </div>
 
         <p class="sub-text">
-            <i class="fa-solid fa-bullhorn megaphone-icon"></i> new poem is up!
+            <i class="fa-solid fa-bullhorn megaphone-icon"></i> currently still writing... <!-- new poem is up!-->
         </p>
-        <p class="sub-text">'too sweet salted caramel'</p>
-        <button class="read-btn" onclick="location.href='tssc-fill.html'">Read Now</button>
+        <p class="sub-text">wanna peek?<br>
+            u must click!</p> <!-- 'too sweet salted caramel' -->
+        <button class="read-btn" onclick="location.href='tssc-not-available.html'">Open</button>
         
         <div class="dropdown-container">
             <p class="sub-text">& if u still have time</p>
             <button class="more-btn" id="more-poems-btn">More Poems</button>
             <div class="dropdown-content" id="poems-dropdown">
-                <a href="bbt-fill.html">beneath brows tight</a>
+                <a href="bbt-not-available.html">beneath brows tight</a>
             </div>
         </div>
         <div class="tea-section">
-            <i class="fa-regular fa-comment-dots tea-icon"></i>so what's tea?
+            <i class="fa-solid fa-bell bell-icon"></i>so what's tea?
         </div>
         <p class="quote">
-            is it explainable how<br>
-            for five to nocturnal air<br>
-            not a tick <b>m</b>oves for three<br>
-            as i lift my head to theirs<br>
-            look at those shoulders clad in shade<br>
-            those jeans where clouds parade<br>
-            and how, just then, those eyes meet mine<br>
-            oh, good heavens<br>
-            these cheeks of apple<br>
-            these drumbeats thrum deep within<br>
-            bet not even an eyelid slips<br>
-            like statues on a hillside green<br>
-            dare to e<b>v</b>en think of holding the sun<br>
-            let chills melt into an ocean<br>
-            yet through it all<br>
-            it's how to move on stage<br>
-            with brows ironed tight<br>
-            and just as the tick moves to four<br>
-            they <b>p</b>ass by like a ball set to soar
-            do u have any? huh?</p>
+            <i class="fa-regular fa-comment-dots message-icon"></i>Ariana Grande has a brand new album, <i>petals</i>, coming out on 7.31.<br>
+            <br>
+            <i class="fa-regular fa-comment-dots message-icon"></i>have u heard "drop dead" by Olivia Rodrigo? i've been looping it since it dropped.<br>
+            <br>
+            <i class="fa-regular fa-comment-dots message-icon"></i>kiss me & i might drop dead.
+            
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
