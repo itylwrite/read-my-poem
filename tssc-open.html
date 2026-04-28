@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poem Content</title>
+    <title>'too sweet salted caramel' by Tyl</title>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            padding: 40px 0;
+            padding: 50px;
+            box-sizing: border-box;
             font-family: 'Indie Flower', cursive;
             display: flex;
             flex-direction: column;
@@ -33,6 +35,17 @@
             font-weight: bold;
             line-height: 1.4;
             margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .exit-message {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            font-weight: bold;
+            margin-top: 20px;
         }
 
         .top-row {
@@ -40,7 +53,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .top-btn {
@@ -72,14 +85,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
         }
 
         .poem-container {
             width: 90%;
             max-width: 800px;
+            margin: 20px auto;
+            padding: 60px;
             background-color: #8fa9c4;
             min-height: 600px;
-            padding: 40px 0;
             background-image: repeating-linear-gradient(
                 to bottom,
                 transparent,
@@ -97,27 +112,52 @@
         .poem-author { font-size: 1.8rem; margin-bottom: 80px; }
         .poem-body { font-size: 1.5rem; line-height: 40px; }
         .footer-nav { margin-top: 30px; }
+
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            body {
+                height: auto; 
+                min-height: 100vh;
+                align-items: flex-start;
+                padding: 20px 0;
+                overflow-y: auto;
+            }
+            .main-content {
+                position: relative; 
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 0 auto;
+            }
+            h1 { font-size: 3rem; }
+            .handle { margin-bottom: 30px; }
+        }
+
     </style>
 </head>
 <body>
 
     <div class="greeting">
-        Hi, <span id="display-name"></span>!<br>
-        pls, enjoy
+        Hi, <span id="display-name"></span> !<br>
+        I'm glad you're here.<br>
+        Stay awhile & read.<br>
     </div>
 
     <div class="top-row">
         <button class="top-btn" onclick="location.href='index.html'">Back to Home</button>
-        <div class="view-count">👁 0</div>
+        <div class="view-count"><i class="fa-solid fa-eye"></i> 0</div>
     </div>
 
     <div class="poem-container">
         <div class="poem-title">too sweet salted caramel</div>
         <div class="poem-author">by Tyl</div>
         <div class="poem-body">
-            body<br>
-            text goes here...
+            text<br>
+            text
         </div>
+    </div>
+
+    <div class="exit-message">
+        Wow... you've reached the end.
     </div>
 
     <div class="footer-nav">
@@ -125,9 +165,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="supabase-config.js"></script>
-
     <script src="script.js"></script>
 
 </body>
