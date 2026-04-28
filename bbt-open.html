@@ -9,7 +9,7 @@
     <style>
         body {
             margin: 0;
-            padding: 50px;
+            padding: 50px 10px 50px 10px;
             box-sizing: border-box;
             font-family: 'Indie Flower', cursive;
             display: flex;
@@ -31,7 +31,7 @@
 
         .greeting {
             text-align: center;
-            font-size: 2rem;
+            font-size: clamp(1.1rem, 4vw, 1.6rem);
             font-weight: bold;
             line-height: 1.4;
             margin-bottom: 30px;
@@ -40,7 +40,7 @@
 
         .exit-message {
             text-align: center;
-            font-size: 2rem;
+            font-size: clamp(1.1rem, 4vw, 1.6rem);
             font-weight: bold;
             line-height: 1.4;
             margin-bottom: 5px;
@@ -108,61 +108,10 @@
             box-sizing: border-box;
         }
 
-        .poem-title { font-size: 2.5rem; text-decoration: underline; margin-bottom: 10px; }
-        .poem-author { font-size: 1.8rem; margin-bottom: 40px; }
-        .poem-body { font-size: 1.5rem; line-height: 40px; }
+        .poem-title { font-size: clamp(1.6rem, 7vw, 2.5rem); text-decoration: underline; margin-bottom: 10px; }
+        .poem-author { font-size: clamp(1rem, 3.5vw, 1.3rem); margin-bottom: 40px; }
+        .poem-body { font-size: clamp(1rem, 3.5vw, 1.3rem); line-height: 40px; }
         .footer-nav { margin-top: 30px; }
-
-        @media screen and (orientation: landscape) and (max-height: 500px) {
-            body {
-                height: auto; 
-                min-height: 100vh;
-                align-items: flex-start;
-                padding: 20px 0;
-                overflow-y: auto;
-            }
-            .main-content {
-                position: relative; 
-                top: 0;
-                left: 0;
-                transform: none;
-                margin: 0 auto;
-            }
-            h1 { font-size: 3rem; }
-            .handle { margin-bottom: 30px; }
-        }
-
-        /* Mobile Specific Fixes */
-        @media screen and (max-width: 480px) {
-            /* Shrink the main titles */
-            h1 {
-                font-size: 2.2rem !important;
-                margin-bottom: 20px !important;
-            }
-
-            /* Shrink the greeting and author text */
-            .greeting, .author, .sub-text, .tea-section {
-                font-size: 1.5rem !important;
-            }
-
-            /* Fix the poem text sizes */
-            .poem-title {
-                font-size: 1.8rem !important;
-            }
-            .poem-author {
-                font-size: 1.3rem !important;
-                margin-bottom: 30px !important;
-            }
-            .poem-body {
-                font-size: 1.1rem !important;
-                line-height: 35px !important; /* Adjusted to keep lines aligned with notebook pattern */
-            }
-
-            /* Adjust button widths for mobile so they aren't too tiny or too wide */
-            .read-btn, .more-btn {
-                width: 60% !important;
-            }
-        }
 
     </style>
 </head>
