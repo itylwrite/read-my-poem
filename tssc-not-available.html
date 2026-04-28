@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Available</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 5vw;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            color: black;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: #8fa9c4; 
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 38px,
+                rgba(0, 0, 0, 0.2) 38px,
+                rgba(0, 0, 0, 0.2) 40px
+            );
+            background-size: 100% 40px;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-family: 'Indie Flower', cursive;
+            font-size: clamp(1.8rem, 7vw, 3rem);
+            line-height: 1.2;
+            margin: 0 0 10px 0; 
+            font-weight: bold;
+        }
+
+        .sub-text {
+            font-family: 'Indie Flower', cursive;
+            font-size: clamp(1.6rem, 5vw, 2.3rem);
+            margin: 0 0 15px 0; 
+            font-weight: bold;
+        }
+
+        .back-btn {
+            width: 30%;
+            max-width: 400px;
+            box-sizing: border-box;
+            background: #567189;
+            border: 5px solid #4a5e71;
+            color: white; 
+            border-radius: 40px;
+            padding: 8px;
+            font-family: "Courier Prime", "Courier New", Courier, monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <h1>oop... still working on it.</h1> 
+        <div class="sub-text">come back next time!</div> 
+        
+            <button class="back-btn" onclick="location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
