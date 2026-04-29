@@ -19,7 +19,7 @@
             width: 100vw;
             font-family: "Courier Prime", "Courier New", Courier, monospace; /* */
             color: black; 
-            background-color: #8fa9c4; /* */
+            background-color: #8fa9c4;
             background-image: repeating-linear-gradient(
                 to bottom,
                 transparent,
@@ -27,7 +27,7 @@
                 rgba(0, 0, 0, 0.2) 38px,
                 rgba(0, 0, 0, 0.2) 40px
             );
-            background-size: 100% 40px; /* */
+            background-size: 100% 40px;
         }
 
         .main-content {
@@ -38,9 +38,9 @@
 
         h1 {
             font-family: 'Indie Flower', cursive;
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: clamp(2rem, 10vw, 5rem);
             line-height: 1.2;
-            margin: 0 0 50px 0;
+            margin: 5px 0 0 0;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -50,10 +50,10 @@
         .tilted-heart {
             display: inline-block; 
             transform: rotate(-15deg); 
-            margin-left: 20px; 
-            font-size: 1.2em; 
-        }
-        
+            margin-left: 15px; 
+            font-size: clamp(2rem, 10vw, 5rem); 
+        } 
+
         .stats-wrapper {
             display: flex;
             justify-content: center;
@@ -100,14 +100,14 @@
             display: inline-block; 
             transform: rotate(-20deg); 
             margin-right: 5px; 
-            font-size: clamp(1.1rem, 4vw, 1.6rem); 
+            font-size: clamp(1.6rem, 5vw, 2.3rem); 
         }
 
         .bell-icon {
             color: transparent;
             margin-right: 13px;
             color: #000; 
-            font-size: clamp(1.1rem, 4vw, 1.6rem); 
+            font-size: clamp(1.6rem, 5vw, 2.3rem); 
         }
 
         .message-icon {
@@ -119,14 +119,14 @@
 
         .sub-text {
             font-family: 'Indie Flower', cursive;
-            font-size: clamp(1.1rem, 4vw, 1.6rem);
-            margin: 5px 1; /* new poem: 1 -> 0 */
+            font-size: clamp(1.6rem, 5vw, 2.3rem);
+            margin: 5px 1; 
             font-weight: bold;
         }
         
         
         .read-btn {
-            width: 30%;
+            width: 45%;
             background: #567189;
             border: 5px solid #4a5e71;
             color: white;
@@ -136,7 +136,7 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            margin: 20px 0 30px 0;
+            margin: 0px 0 30px 0;
             transition: 0.2s;
         } 
 
@@ -146,7 +146,7 @@
         }
 
         .more-btn {
-            width: 30%;
+            width: 45%;
             background: #567189; 
             border: 5px solid #4a5e71;
             color: white;
@@ -156,7 +156,7 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            margin: 20px 0 50px 0;
+            margin: 0px 0 50px 0;
             transition: 0.2s;
         } 
 
@@ -211,7 +211,7 @@
         .tea-section {
             display: block;
             font-family: 'Indie Flower', cursive;
-            font-size: clamp(1.1rem, 4vw, 1.6rem);
+            font-size: clamp(1.6rem, 5vw, 2.3rem);
             margin-top: 10px;
             font-weight: bold;
         }
@@ -229,7 +229,7 @@
 <body>
 
     <div class="main-content">
-        <h1>Hi, I'm Tyl <span class="tilted-heart">♡</span></h1>
+        <h1>Hi, I'm Tyl <i class="fa-regular fa-heart tilted-heart"></i></span></h1>
 
        <div class="stats-wrapper">
             <a href="https://instagram.com/tyljohna" target="_blank" class="ig-btn-styled">
@@ -243,10 +243,10 @@
         </div>
 
         <p class="sub-text">
-            <i class="fa-solid fa-bullhorn megaphone-icon"></i> currently still writing... <!-- new poem is up!-->
+            <i class="fa-solid fa-bullhorn megaphone-icon"></i> currently still writing... 
         </p>
         <p class="sub-text">wanna peek?<br>
-            u must click!</p> <!-- 'too sweet salted caramel' -->
+            u must click!</p> 
         <button class="read-btn" onclick="location.href='tssc-not-available.html'">Open</button>
         
         <div class="dropdown-container">
@@ -260,18 +260,17 @@
             <i class="fa-solid fa-bell bell-icon"></i>so what's tea?
         </div>
         <p class="quote">
-            <i class="fa-regular fa-comment-dots message-icon"></i>Ariana Grande has a brand new album, <i>petals</i>, coming out on 7.31.<br>
+            <i class="fa-regular fa-comment-dots message-icon"></i>Ariana also has a brand new album, <i>petal</i>, coming out on 7.31.<br>
             <br>
-            <i class="fa-regular fa-comment-dots message-icon"></i>have u heard "drop dead" by Olivia Rodrigo? i've been looping it since it dropped.<br>
+            <i class="fa-regular fa-comment-dots message-icon"></i>have u heard “drop dead”? i’ve been looping it ever since it came out.<br>
             <br>
-            <i class="fa-regular fa-comment-dots message-icon"></i>kiss me & i might drop dead.
-            
+            <i class="fa-regular fa-comment-dots message-icon"></i>Olivia Rodrigo’s releasing a new album, <i>you seem pretty sad for a girl so in love</i>, on 6.12.<br>
+            <br>
+            <i class="fa-regular fa-comment-dots message-icon"></i>new poem soon.
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="supabase-config.js"></script>
-
     <script src="script.js"></script>
 
 </body>
