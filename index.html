@@ -103,27 +103,26 @@
             font-size: clamp(1.6rem, 5vw, 2.3rem); 
         }
 
-        .bell-icon {
+        .comments-icon {
             color: transparent;
-            margin-right: 13px;
+            margin-right: 15px;
             color: #000; 
             font-size: clamp(1.6rem, 5vw, 2.3rem); 
         }
 
-        .message-icon {
+        .bell-icon {
             color: transparent;
             margin-right: 13px; 
             color: #000; 
-            font-size: clamp(1.1rem, 4vw, 1.6rem); 
+            font-size: 1.1rem; 
         }
 
         .sub-text {
             font-family: 'Indie Flower', cursive;
             font-size: clamp(1.6rem, 5vw, 2.3rem);
-            margin: 5px 1; 
+            margin: 5px 1; /* new poem: 1 -> 0 */
             font-weight: bold;
         }
-        
         
         .read-btn {
             width: 45%;
@@ -215,15 +214,65 @@
             margin-top: 10px;
             font-weight: bold;
         }
-
-        .quote {
-            font-family: "Courier Prime", "Courier New", Courier, monospace;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            line-height: 1.5;
-            margin: 20px 0 50px 0;
+        
+        .tea-container {
+            width: 100%;
+            max-width: 1000px; 
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 25px;
+            justify-items: center;
+            align-items: start;
         }
+
+        @media (min-width: 600px) { .tea-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 900px) { .tea-container { grid-template-columns: repeat(3, 1fr); } }
+
+        .sticky-note {
+            background-color: #fff9c4; 
+            width: 90%; 
+            min-height: 180px;
+            padding: 35px 20px 20px 20px; 
+            box-sizing: border-box;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+            border: 2px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            color: #262423;
+            font-size: clamp(0.9rem, 2.7vw, 1rem);
+            font-family:  "Courier Prime", "Courier New", Courier, monospace;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .sticky-note::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            background-color: var(--pin-color, #567189); 
+            border: 2px solid rgba(0,0,0,0.2);
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .sticky-note:nth-child(even) { transform: rotate(2deg); }
+        .sticky-note:nth-child(odd) { transform: rotate(-3deg); }
+
+        .sticky-note:hover { transform: scale(1.05) rotate(0deg); z-index: 5; }
+
+        .note-blue { background-color: #d1e9ff; }
+        .note-pink { background-color: #ffd1dc; }
+        .note-white {background-color: #fdfdfd;}
+
     </style>
 </head>
 <body>
@@ -243,10 +292,10 @@
         </div>
 
         <p class="sub-text">
-            <i class="fa-solid fa-bullhorn megaphone-icon"></i> currently still writing... 
+            <i class="fa-solid fa-bullhorn megaphone-icon"></i> currently still writing... <!-- new poem is up!-->
         </p>
         <p class="sub-text">wanna peek?<br>
-            u must click!</p> 
+            u must click!</p> <!-- 'too sweet salted caramel' -->
         <button class="read-btn" onclick="location.href='tssc-not-available.html'">Open</button>
         
         <div class="dropdown-container">
@@ -257,16 +306,31 @@
             </div>
         </div>
         <div class="tea-section">
-            <i class="fa-solid fa-bell bell-icon"></i>so what's tea?
+            <i class="fa-regular fa-comments comments-icon"></i>so what's tea?
         </div>
-        <p class="quote">
-            <i class="fa-regular fa-comment-dots message-icon"></i>Ariana also has a brand new album, <i>petal</i>, coming out on 7.31.<br>
-            <br>
-            <i class="fa-regular fa-comment-dots message-icon"></i>have u heard “drop dead”? i’ve been looping it ever since it came out.<br>
-            <br>
-            <i class="fa-regular fa-comment-dots message-icon"></i>Olivia Rodrigo’s releasing a new album, <i>you seem pretty sad for a girl so in love</i>, on 6.12.<br>
-            <br>
-            <i class="fa-regular fa-comment-dots message-icon"></i>new poem soon.
+
+        <div class="tea-container">
+            <div class="sticky-note note-white" style="--pin-color: black;">
+                Ariana Grande has a brand new album, 'petal,' coming out on 7.31.
+            </div>
+            <div class="sticky-note" style="--pin-color: red; font-family: 'Indie Flower', New Courier;">
+                <center>pisces & a sag</center>
+            </div>
+            <div class="sticky-note note-pink" style="--pin-color: #567189; font-family: 'Indie Flower', New Courier;">
+                <span style="display: block; text-align: right;">4 / 21 / 26</span>
+                    <br>
+                    have u heard “drop dead” ? i’ve been looping it ever since it came out.
+            </div>
+            <div class="sticky-note note-white" style="--pin-color: #f49cae;">
+                Olivia Rodrigo’s new album, 'you seem pretty sad for a girl so in love,' out on 6.12.
+            </div>
+            <div class="sticky-note note-blue" style="--pin-color: white; font-family: 'Indie Flower', New Courier;">
+                <span style="display: block; text-align: right;">4 / 1 / 26</span>
+                    <br>
+                    <center>new poem soon 𖹭</center>
+            </div>
+        </div>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
